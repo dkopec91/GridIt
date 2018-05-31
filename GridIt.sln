@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridIt", "GridIt\GridIt.csproj", "{89163B29-46F0-4E3F-9D30-AC7234667FEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89163B29-46F0-4E3F-9D30-AC7234667FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89163B29-46F0-4E3F-9D30-AC7234667FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89163B29-46F0-4E3F-9D30-AC7234667FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89163B29-46F0-4E3F-9D30-AC7234667FEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D101BB7C-9632-49EF-ADCB-7CACE32C18E0}
+	EndGlobalSection
+EndGlobal

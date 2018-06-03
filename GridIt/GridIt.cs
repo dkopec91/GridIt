@@ -12,9 +12,9 @@ namespace GridIt
         public GridIt()
         {
             InitializeComponent();
-            Config.LoadConfiguration();
-            Config.DesktopWidth = SystemInformation.VirtualScreen.Width;
             Config.DesktopHeight = SystemInformation.VirtualScreen.Height;
+            Config.DesktopWidth = SystemInformation.VirtualScreen.Width;
+            Config.LoadConfiguration();
             SetGuiControls();
         }
 
@@ -26,16 +26,25 @@ namespace GridIt
             numGridSizeY.Value = Config.GridWidth;
             numGridThickness.Value = Config.LineThickness;
             lblGridColor.BackColor = Config.ColorGrid;
+            colorDialogGrid.Color = Config.ColorGrid;
+        }
+
+        private void GuiToConfig()
+        {
+            Config.GridOffsetHorizontal = (int)numGridOffsetX.Value;
+            Config.GridOffsetVertical = (int)numGridOffsetY.Value;
+            Config.GridHeight = (int)numGridSizeX.Value;
+            Config.GridWidth = (int)numGridSizeY.Value;
+            Config.LineThickness = (int)numGridThickness.Value;
+            Config.ColorGrid = lblGridColor.BackColor;
         }
 
         private void btnOnOffFullGrid_Click(object sender, EventArgs e)
         {
-            GuiToConfig();
             if (FullGridShown)
             {
                 btnOnOffFullGrid.Text = "Show Grid";
-                gridWindow.Dispose();
-                gridWindow = null;
+                gridWindow.Hide();
             }
             else
             {
@@ -61,24 +70,19 @@ namespace GridIt
             colorDialogGrid.ShowDialog();
             Config.ColorGrid = colorDialogGrid.Color;
             lblGridColor.BackColor = colorDialogGrid.Color;
-            if (gridWindow != null) gridWindow.DrawImage();
-            Config.SaveConfiguration();
         }
 
-        private void GridIt_FormClosing(object sender, FormClosingEventArgs e)
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            GuiToConfig();
+            if (gridWindow != null) gridWindow.DrawImage();
+        }
+
+        private void btnSaveSettings_Click(object sender, EventArgs e)
         {
             GuiToConfig();
             Config.SaveConfiguration();
-        }
-
-        private void GuiToConfig()
-        {
-            Config.GridOffsetHorizontal = (int)numGridOffsetX.Value;
-            Config.GridOffsetVertical = (int)numGridOffsetY.Value;
-            Config.GridHeight = (int)numGridSizeX.Value;
-            Config.GridWidth = (int)numGridSizeY.Value;
-            Config.LineThickness = (int)numGridThickness.Value;
-            Config.ColorGrid = lblGridColor.BackColor;
+            if (gridWindow != null) gridWindow.DrawImage();
         }
     }
 }

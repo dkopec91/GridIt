@@ -54,6 +54,7 @@
             this.btnApply = new System.Windows.Forms.Button();
             this.btnSaveSettings = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.cbxWindowsStartup = new System.Windows.Forms.CheckBox();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             panelFullGrid = new System.Windows.Forms.TableLayoutPanel();
             panelFullGrid.SuspendLayout();
@@ -128,7 +129,7 @@
             this.lblGridColor.Name = "lblGridColor";
             this.lblGridColor.Size = new System.Drawing.Size(89, 20);
             this.lblGridColor.TabIndex = 2;
-            this.lblGridColor.Click += new System.EventHandler(this.lblGridColor_Click);
+            this.lblGridColor.Click += new System.EventHandler(this.LblGridColor_Click);
             // 
             // numGridOffsetY
             // 
@@ -286,7 +287,7 @@
             this.btnOnOffFullGrid.TabIndex = 5;
             this.btnOnOffFullGrid.Text = "Show Grid (Ctrl + 1)";
             this.btnOnOffFullGrid.UseVisualStyleBackColor = true;
-            this.btnOnOffFullGrid.Click += new System.EventHandler(this.btnOnOffFullGrid_Click);
+            this.btnOnOffFullGrid.Click += new System.EventHandler(this.BtnOnOffFullGrid_Click);
             // 
             // tabCrosshair
             // 
@@ -345,7 +346,7 @@
             this.btnApply.TabIndex = 1;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
-            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            this.btnApply.Click += new System.EventHandler(this.BtnApply_Click);
             // 
             // btnSaveSettings
             // 
@@ -357,24 +358,43 @@
             this.btnSaveSettings.TabIndex = 2;
             this.btnSaveSettings.Text = "Save";
             this.btnSaveSettings.UseVisualStyleBackColor = true;
-            this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
+            this.btnSaveSettings.Click += new System.EventHandler(this.BtnSaveSettings_Click);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.cbxWindowsStartup, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnSaveSettings, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.tabGuiContainer, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnApply, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(204, 241);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(204, 271);
             this.tableLayoutPanel1.TabIndex = 3;
+            // 
+            // cbxWindowsStartup
+            // 
+            this.cbxWindowsStartup.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cbxWindowsStartup.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.cbxWindowsStartup, 2);
+            this.cbxWindowsStartup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxWindowsStartup.Location = new System.Drawing.Point(0, 241);
+            this.cbxWindowsStartup.Margin = new System.Windows.Forms.Padding(0);
+            this.cbxWindowsStartup.Name = "cbxWindowsStartup";
+            this.cbxWindowsStartup.Size = new System.Drawing.Size(204, 30);
+            this.cbxWindowsStartup.TabIndex = 6;
+            this.cbxWindowsStartup.Text = "Click to run GridIt on system startup";
+            this.cbxWindowsStartup.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cbxWindowsStartup.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.cbxWindowsStartup.UseVisualStyleBackColor = true;
+            this.cbxWindowsStartup.CheckedChanged += new System.EventHandler(this.CbxWindowsStartup_CheckedChanged);
             // 
             // notifyIcon
             // 
@@ -382,17 +402,17 @@
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "GridIt";
             this.notifyIcon.Visible = true;
-            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseDoubleClick);
             // 
             // GridIt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(204, 241);
+            this.ClientSize = new System.Drawing.Size(204, 271);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(220, 280);
-            this.MinimumSize = new System.Drawing.Size(220, 280);
+            this.MaximumSize = new System.Drawing.Size(220, 310);
+            this.MinimumSize = new System.Drawing.Size(220, 310);
             this.Name = "GridIt";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "GridIt";
@@ -410,6 +430,7 @@
             this.tabFullGrid.PerformLayout();
             this.tabAbout.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -440,5 +461,6 @@
         private System.Windows.Forms.Button btnSaveSettings;
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.CheckBox cbxWindowsStartup;
     }
 }

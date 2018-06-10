@@ -9,7 +9,7 @@ namespace GridIt
         public GridWindow()
         {
             InitializeComponent();
-            SetAsOverlay();
+            WindowsApi.SetAsOverlay(this);
             DrawImage();
         }
 
@@ -27,18 +27,6 @@ namespace GridIt
                 for (int h = 0; h < Config.DesktopHeight; h++)
                     for (int bw = w; bw < w + Config.LineThickness && bw < Config.DesktopWidth; bw++)
                         grid.SetPixel(bw, h, Config.ColorGrid);
-        }
-
-        private void SetAsOverlay()
-        {
-            int exstyle = WindowsApi.GetWindowLong(this.Handle, WindowsApi.GWL_EXSTYLE);
-            exstyle |= WindowsApi.WS_EX_TRANSPARENT;
-            WindowsApi.SetWindowLong(this.Handle, WindowsApi.GWL_EXSTYLE, exstyle);
-
-            IntPtr hwndf = this.Handle;
-            IntPtr hwndParent = WindowsApi.GetDesktopWindow();
-            WindowsApi.SetParent(hwndf, hwndParent);
-            this.TopMost = true;
         }
     }
 }

@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
-using GridIt.Properties;
 
 namespace GridIt
 {
     public partial class GridIt : Form
     {
-        private static bool FullGridShown;
         private GridWindow gridWindow;
-        private int _hotkeyCrosshair;
-        private int _hotkeyFullGrid;
-        private int _hotkeyRadial;
+        private static bool FullGridShown;        
+        private int _hotkeyIdCrosshair;
+        private int _hotkeyIdFullGrid;
+        private int _hotkeyIdRadial;
 
         public GridIt()
         {
@@ -27,20 +26,20 @@ namespace GridIt
             WindowsApi.KeyModifiers modifiers = WindowsApi.KeyModifiers.MOD_CONTROL |
                                                 WindowsApi.KeyModifiers.MOD_NOREPEAT;
 
-            _hotkeyFullGrid = this.Handle.ToInt32() ^ (int)modifiers ^ (int)Keys.D1;
-            _hotkeyCrosshair = this.Handle.ToInt32() ^ (int)modifiers ^ (int)Keys.D2;
-            _hotkeyRadial = this.Handle.ToInt32() ^ (int)modifiers ^ (int)Keys.D3;
+            _hotkeyIdFullGrid = this.Handle.ToInt32() ^ (int)modifiers ^ (int)Keys.D1;
+            _hotkeyIdCrosshair = this.Handle.ToInt32() ^ (int)modifiers ^ (int)Keys.D2;
+            _hotkeyIdRadial = this.Handle.ToInt32() ^ (int)modifiers ^ (int)Keys.D3;
 
-            WindowsApi.RegisterHotKey(this.Handle, _hotkeyFullGrid, modifiers, Keys.D1);
-            WindowsApi.RegisterHotKey(this.Handle, _hotkeyCrosshair, modifiers, Keys.D2);
-            WindowsApi.RegisterHotKey(this.Handle, _hotkeyRadial, modifiers, Keys.D3);
+            WindowsApi.RegisterHotKey(this.Handle, _hotkeyIdFullGrid, modifiers, Keys.D1);
+            WindowsApi.RegisterHotKey(this.Handle, _hotkeyIdCrosshair, modifiers, Keys.D2);
+            WindowsApi.RegisterHotKey(this.Handle, _hotkeyIdRadial, modifiers, Keys.D3);
         }
 
         private void UnregisterHotkeys()
         {
-            WindowsApi.UnregisterHotKey(this.Handle, _hotkeyRadial);
-            WindowsApi.UnregisterHotKey(this.Handle, _hotkeyFullGrid);
-            WindowsApi.UnregisterHotKey(this.Handle, _hotkeyCrosshair);
+            WindowsApi.UnregisterHotKey(this.Handle, _hotkeyIdRadial);
+            WindowsApi.UnregisterHotKey(this.Handle, _hotkeyIdFullGrid);
+            WindowsApi.UnregisterHotKey(this.Handle, _hotkeyIdCrosshair);
         }
 
         private void SetGuiControls()
@@ -52,6 +51,11 @@ namespace GridIt
             numGridThickness.Value = Config.LineThickness;
             lblGridColor.BackColor = Config.ColorGrid;
             colorDialogGrid.Color = Config.ColorGrid;
+            cbxWindowsStartup.CheckState = Config.RunsOnSystemStartup() ? CheckState.Checked 
+                                                                        : CheckState.Unchecked;
+
+            if (cbxWindowsStartup.CheckState==CheckState.Unchecked)
+                cbxWindowsStartup.Text = Messages.SetRunOnStartup;
         }
 
         private void GuiToConfig()
@@ -64,7 +68,7 @@ namespace GridIt
             Config.ColorGrid = lblGridColor.BackColor;
         }
 
-        private void btnOnOffFullGrid_Click(object sender, EventArgs e)
+        private void BtnOnOffFullGrid_Click(object sender, EventArgs e)
         {
             if (FullGridShown)
             {
@@ -90,40 +94,35 @@ namespace GridIt
             FullGridShown = !FullGridShown;
         }
 
-        private void lblGridColor_Click(object sender, EventArgs e)
+        private void LblGridColor_Click(object sender, EventArgs e)
         {
             colorDialogGrid.ShowDialog();
             Config.ColorGrid = colorDialogGrid.Color;
             lblGridColor.BackColor = colorDialogGrid.Color;
         }
 
-        private void btnApply_Click(object sender, EventArgs e)
+        private void BtnApply_Click(object sender, EventArgs e)
         {
             GuiToConfig();
             if (gridWindow != null) gridWindow.DrawImage();
         }
 
-        private void btnSaveSettings_Click(object sender, EventArgs e)
+        private void BtnSaveSettings_Click(object sender, EventArgs e)
         {
             GuiToConfig();
             Config.SaveConfiguration();
             if (gridWindow != null) gridWindow.DrawImage();
         }
 
-        private void GridIt_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            UnregisterHotkeys();
-        }
-
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == WindowsApi.WM_HOTKEY_MSG_ID)
             {
-                if (m.WParam.ToInt32() == _hotkeyFullGrid)
-                    btnOnOffFullGrid_Click(this, null);
-                else if (m.WParam.ToInt32() == _hotkeyCrosshair)
+                if (m.WParam.ToInt32() == _hotkeyIdFullGrid)
+                    BtnOnOffFullGrid_Click(this, null);
+                else if (m.WParam.ToInt32() == _hotkeyIdCrosshair)
                     throw new NotImplementedException("Crosshair overlay not implemented");
-                else if (m.WParam.ToInt32() == _hotkeyRadial)
+                else if (m.WParam.ToInt32() == _hotkeyIdRadial)
                     throw new NotImplementedException("Radial overlay not implemented");
             }
             base.WndProc(ref m);
@@ -143,10 +142,29 @@ namespace GridIt
             }
         }
 
-        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void GridIt_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UnregisterHotkeys();
+        }
+        
+        private void NotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Show();
             this.WindowState = FormWindowState.Normal;
+        }
+
+        private void CbxWindowsStartup_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxWindowsStartup.CheckState == CheckState.Checked)
+            {
+                cbxWindowsStartup.Text = Messages.UnsetRunOnStartup;
+                Config.SetRunOnSystemStartup(true);
+            }
+            else
+            {
+                cbxWindowsStartup.Text = Messages.SetRunOnStartup;
+                Config.SetRunOnSystemStartup(false);
+            }
         }
     }
 }

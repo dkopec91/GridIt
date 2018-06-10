@@ -59,6 +59,7 @@
     <Compile Include="GridWindow.Designer.cs">
       <DependentUpon>GridWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Messages.cs" />
     <Compile Include="WindowsApi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

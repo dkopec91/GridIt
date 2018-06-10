@@ -8,6 +8,9 @@ namespace GridIt
     {
         private static bool FullGridShown;
         private GridWindow gridWindow;
+        private int _hotkeyCrosshair;
+        private int _hotkeyFullGrid;
+        private int _hotkeyRadial;
 
         public GridIt()
         {
@@ -15,7 +18,29 @@ namespace GridIt
             Config.DesktopHeight = SystemInformation.VirtualScreen.Height;
             Config.DesktopWidth = SystemInformation.VirtualScreen.Width;
             Config.LoadConfiguration();
+            RegisterHotkeys();
             SetGuiControls();
+        }
+
+        private void RegisterHotkeys()
+        {
+            WindowsApi.KeyModifiers modifiers = WindowsApi.KeyModifiers.MOD_CONTROL |
+                                                WindowsApi.KeyModifiers.MOD_NOREPEAT;
+
+            _hotkeyFullGrid = this.Handle.ToInt32() ^ (int)modifiers ^ (int)Keys.D1;
+            _hotkeyCrosshair = this.Handle.ToInt32() ^ (int)modifiers ^ (int)Keys.D2;
+            _hotkeyRadial = this.Handle.ToInt32() ^ (int)modifiers ^ (int)Keys.D3;
+
+            WindowsApi.RegisterHotKey(this.Handle, _hotkeyFullGrid, modifiers, Keys.D1);
+            WindowsApi.RegisterHotKey(this.Handle, _hotkeyCrosshair, modifiers, Keys.D2);
+            WindowsApi.RegisterHotKey(this.Handle, _hotkeyRadial, modifiers, Keys.D3);
+        }
+
+        private void UnregisterHotkeys()
+        {
+            WindowsApi.UnregisterHotKey(this.Handle, _hotkeyRadial);
+            WindowsApi.UnregisterHotKey(this.Handle, _hotkeyFullGrid);
+            WindowsApi.UnregisterHotKey(this.Handle, _hotkeyCrosshair);
         }
 
         private void SetGuiControls()
@@ -43,7 +68,7 @@ namespace GridIt
         {
             if (FullGridShown)
             {
-                btnOnOffFullGrid.Text = "Show Grid";
+                btnOnOffFullGrid.Text = "Show Grid (Ctrl + 1)";
                 gridWindow.Hide();
             }
             else
@@ -60,7 +85,7 @@ namespace GridIt
                     };
                 }
                 gridWindow.Show();
-                btnOnOffFullGrid.Text = "Hide Grid";
+                btnOnOffFullGrid.Text = "Hide Grid (Ctrl + 1)";
             }
             FullGridShown = !FullGridShown;
         }
@@ -83,6 +108,45 @@ namespace GridIt
             GuiToConfig();
             Config.SaveConfiguration();
             if (gridWindow != null) gridWindow.DrawImage();
+        }
+
+        private void GridIt_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UnregisterHotkeys();
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WindowsApi.WM_HOTKEY_MSG_ID)
+            {
+                if (m.WParam.ToInt32() == _hotkeyFullGrid)
+                    btnOnOffFullGrid_Click(this, null);
+                else if (m.WParam.ToInt32() == _hotkeyCrosshair)
+                    throw new NotImplementedException("Crosshair overlay not implemented");
+                else if (m.WParam.ToInt32() == _hotkeyRadial)
+                    throw new NotImplementedException("Radial overlay not implemented");
+            }
+            base.WndProc(ref m);
+        }
+
+        private void GridIt_Resize(object sender, EventArgs e)
+        {
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                notifyIcon.Visible = true;
+                this.Hide();
+            }
+
+            else if (FormWindowState.Normal == this.WindowState)
+            {
+                notifyIcon.Visible = false;
+            }
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }

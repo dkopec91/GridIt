@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TableLayoutPanel panelFullGrid;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GridIt));
             this.numGridOffsetX = new System.Windows.Forms.NumericUpDown();
             this.lblGridColor = new System.Windows.Forms.Label();
             this.numGridOffsetY = new System.Windows.Forms.NumericUpDown();
@@ -52,6 +54,7 @@
             this.btnApply = new System.Windows.Forms.Button();
             this.btnSaveSettings = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             panelFullGrid = new System.Windows.Forms.TableLayoutPanel();
             panelFullGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numGridOffsetX)).BeginInit();
@@ -121,7 +124,7 @@
             this.lblGridColor.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblGridColor.Location = new System.Drawing.Point(97, 133);
             this.lblGridColor.Margin = new System.Windows.Forms.Padding(3);
-            this.lblGridColor.MinimumSize = new System.Drawing.Size(0, 20);
+            this.lblGridColor.MinimumSize = new System.Drawing.Size(2, 20);
             this.lblGridColor.Name = "lblGridColor";
             this.lblGridColor.Size = new System.Drawing.Size(89, 20);
             this.lblGridColor.TabIndex = 2;
@@ -281,7 +284,7 @@
             this.btnOnOffFullGrid.Name = "btnOnOffFullGrid";
             this.btnOnOffFullGrid.Size = new System.Drawing.Size(189, 22);
             this.btnOnOffFullGrid.TabIndex = 5;
-            this.btnOnOffFullGrid.Text = "Show Grid";
+            this.btnOnOffFullGrid.Text = "Show Grid (Ctrl + 1)";
             this.btnOnOffFullGrid.UseVisualStyleBackColor = true;
             this.btnOnOffFullGrid.Click += new System.EventHandler(this.btnOnOffFullGrid_Click);
             // 
@@ -290,7 +293,7 @@
             this.tabCrosshair.Location = new System.Drawing.Point(4, 22);
             this.tabCrosshair.Name = "tabCrosshair";
             this.tabCrosshair.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCrosshair.Size = new System.Drawing.Size(196, 185);
+            this.tabCrosshair.Size = new System.Drawing.Size(195, 184);
             this.tabCrosshair.TabIndex = 1;
             this.tabCrosshair.Text = "Crosshair";
             this.tabCrosshair.UseVisualStyleBackColor = true;
@@ -300,7 +303,7 @@
             this.tabRadialGrid.Location = new System.Drawing.Point(4, 22);
             this.tabRadialGrid.Name = "tabRadialGrid";
             this.tabRadialGrid.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRadialGrid.Size = new System.Drawing.Size(196, 185);
+            this.tabRadialGrid.Size = new System.Drawing.Size(195, 184);
             this.tabRadialGrid.TabIndex = 2;
             this.tabRadialGrid.Text = "Radial Grid";
             this.tabRadialGrid.UseVisualStyleBackColor = true;
@@ -310,7 +313,7 @@
             this.tabAbout.Controls.Add(this.lblEmail);
             this.tabAbout.Location = new System.Drawing.Point(4, 22);
             this.tabAbout.Name = "tabAbout";
-            this.tabAbout.Size = new System.Drawing.Size(196, 185);
+            this.tabAbout.Size = new System.Drawing.Size(195, 184);
             this.tabAbout.TabIndex = 3;
             this.tabAbout.Text = "About";
             this.tabAbout.UseVisualStyleBackColor = true;
@@ -321,7 +324,7 @@
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblEmail.Location = new System.Drawing.Point(0, 0);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(196, 185);
+            this.lblEmail.Size = new System.Drawing.Size(195, 184);
             this.lblEmail.TabIndex = 0;
             this.lblEmail.Text = "dkopec91@gmail.com";
             this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -373,18 +376,28 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(204, 241);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "GridIt";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
+            // 
             // GridIt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(204, 241);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(220, 280);
             this.MinimumSize = new System.Drawing.Size(220, 280);
             this.Name = "GridIt";
-            this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "GridIt";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GridIt_FormClosing);
+            this.Resize += new System.EventHandler(this.GridIt_Resize);
             panelFullGrid.ResumeLayout(false);
             panelFullGrid.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numGridOffsetX)).EndInit();
@@ -426,5 +439,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnSaveSettings;
         private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }

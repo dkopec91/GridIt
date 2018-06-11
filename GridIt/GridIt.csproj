@@ -60,6 +60,7 @@
       <DependentUpon>GridWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Messages.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="WindowsApi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

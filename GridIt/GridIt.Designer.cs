@@ -43,19 +43,24 @@
             this.lblGridSizeY = new System.Windows.Forms.Label();
             this.lblGridThickness = new System.Windows.Forms.Label();
             this.lblGridColorLbl = new System.Windows.Forms.Label();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.btnApply = new System.Windows.Forms.Button();
             this.tabGuiContainer = new System.Windows.Forms.TabControl();
             this.tabFullGrid = new System.Windows.Forms.TabPage();
             this.btnOnOffFullGrid = new System.Windows.Forms.Button();
             this.tabCrosshair = new System.Windows.Forms.TabPage();
+            this.panelCrosshair = new System.Windows.Forms.TableLayoutPanel();
+            this.lblCrosshairThickness = new System.Windows.Forms.Label();
+            this.numCrosshairThickness = new System.Windows.Forms.NumericUpDown();
+            this.lblCrosshairColorLbl = new System.Windows.Forms.Label();
+            this.lblCrosshairColor = new System.Windows.Forms.Label();
             this.tabRadialGrid = new System.Windows.Forms.TabPage();
             this.tabAbout = new System.Windows.Forms.TabPage();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.colorDialogGrid = new System.Windows.Forms.ColorDialog();
-            this.btnApply = new System.Windows.Forms.Button();
             this.btnSaveSettings = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.cbxWindowsStartup = new System.Windows.Forms.CheckBox();
-            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.tabMainPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.colorDialogGrid = new System.Windows.Forms.ColorDialog();
             panelFullGrid = new System.Windows.Forms.TableLayoutPanel();
             panelFullGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numGridOffsetX)).BeginInit();
@@ -65,8 +70,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numGridThickness)).BeginInit();
             this.tabGuiContainer.SuspendLayout();
             this.tabFullGrid.SuspendLayout();
+            this.tabCrosshair.SuspendLayout();
+            this.panelCrosshair.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCrosshairThickness)).BeginInit();
             this.tabAbout.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tabMainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelFullGrid
@@ -176,10 +184,20 @@
             0,
             0,
             0});
+            this.numGridThickness.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numGridThickness.Name = "numGridThickness";
             this.numGridThickness.Size = new System.Drawing.Size(89, 20);
             this.numGridThickness.TabIndex = 8;
             this.numGridThickness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numGridThickness.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // lblGridOffsetX
             // 
@@ -247,9 +265,29 @@
             this.lblGridColorLbl.Text = "Line color";
             this.lblGridColorLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "GridIt";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseDoubleClick);
+            // 
+            // btnApply
+            // 
+            this.btnApply.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnApply.Location = new System.Drawing.Point(0, 211);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(0);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(102, 30);
+            this.btnApply.TabIndex = 1;
+            this.btnApply.Text = "Apply";
+            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.BtnApply_Click);
+            // 
             // tabGuiContainer
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.tabGuiContainer, 2);
+            this.tabMainPanel.SetColumnSpan(this.tabGuiContainer, 2);
             this.tabGuiContainer.Controls.Add(this.tabFullGrid);
             this.tabGuiContainer.Controls.Add(this.tabCrosshair);
             this.tabGuiContainer.Controls.Add(this.tabRadialGrid);
@@ -291,6 +329,7 @@
             // 
             // tabCrosshair
             // 
+            this.tabCrosshair.Controls.Add(this.panelCrosshair);
             this.tabCrosshair.Location = new System.Drawing.Point(4, 22);
             this.tabCrosshair.Name = "tabCrosshair";
             this.tabCrosshair.Padding = new System.Windows.Forms.Padding(3);
@@ -298,6 +337,80 @@
             this.tabCrosshair.TabIndex = 1;
             this.tabCrosshair.Text = "Crosshair";
             this.tabCrosshair.UseVisualStyleBackColor = true;
+            // 
+            // panelCrosshair
+            // 
+            this.panelCrosshair.ColumnCount = 2;
+            this.panelCrosshair.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelCrosshair.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelCrosshair.Controls.Add(this.lblCrosshairThickness, 0, 0);
+            this.panelCrosshair.Controls.Add(this.numCrosshairThickness, 1, 0);
+            this.panelCrosshair.Controls.Add(this.lblCrosshairColorLbl, 0, 1);
+            this.panelCrosshair.Controls.Add(this.lblCrosshairColor, 1, 1);
+            this.panelCrosshair.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelCrosshair.Location = new System.Drawing.Point(3, 3);
+            this.panelCrosshair.Name = "panelCrosshair";
+            this.panelCrosshair.RowCount = 3;
+            this.panelCrosshair.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelCrosshair.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panelCrosshair.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.panelCrosshair.Size = new System.Drawing.Size(189, 178);
+            this.panelCrosshair.TabIndex = 0;
+            // 
+            // lblCrosshairThickness
+            // 
+            this.lblCrosshairThickness.AutoSize = true;
+            this.lblCrosshairThickness.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCrosshairThickness.Location = new System.Drawing.Point(3, 0);
+            this.lblCrosshairThickness.Name = "lblCrosshairThickness";
+            this.lblCrosshairThickness.Size = new System.Drawing.Size(88, 24);
+            this.lblCrosshairThickness.TabIndex = 0;
+            this.lblCrosshairThickness.Text = "Line thickness";
+            this.lblCrosshairThickness.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numCrosshairThickness
+            // 
+            this.numCrosshairThickness.AutoSize = true;
+            this.numCrosshairThickness.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numCrosshairThickness.Location = new System.Drawing.Point(97, 3);
+            this.numCrosshairThickness.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numCrosshairThickness.Name = "numCrosshairThickness";
+            this.numCrosshairThickness.Size = new System.Drawing.Size(89, 20);
+            this.numCrosshairThickness.TabIndex = 1;
+            this.numCrosshairThickness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numCrosshairThickness.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // lblCrosshairColorLbl
+            // 
+            this.lblCrosshairColorLbl.AutoSize = true;
+            this.lblCrosshairColorLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCrosshairColorLbl.Location = new System.Drawing.Point(3, 24);
+            this.lblCrosshairColorLbl.Name = "lblCrosshairColorLbl";
+            this.lblCrosshairColorLbl.Size = new System.Drawing.Size(88, 24);
+            this.lblCrosshairColorLbl.TabIndex = 2;
+            this.lblCrosshairColorLbl.Text = "Line collor";
+            this.lblCrosshairColorLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblCrosshairColor
+            // 
+            this.lblCrosshairColor.AutoSize = true;
+            this.lblCrosshairColor.BackColor = System.Drawing.Color.Cyan;
+            this.lblCrosshairColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblCrosshairColor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCrosshairColor.Location = new System.Drawing.Point(97, 27);
+            this.lblCrosshairColor.Margin = new System.Windows.Forms.Padding(3);
+            this.lblCrosshairColor.Name = "lblCrosshairColor";
+            this.lblCrosshairColor.Size = new System.Drawing.Size(89, 18);
+            this.lblCrosshairColor.TabIndex = 3;
+            this.lblCrosshairColor.Click += new System.EventHandler(this.LblCrosshairColor_Click);
             // 
             // tabRadialGrid
             // 
@@ -330,24 +443,6 @@
             this.lblEmail.Text = "dkopec91@gmail.com";
             this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // colorDialogGrid
-            // 
-            this.colorDialogGrid.AllowFullOpen = false;
-            this.colorDialogGrid.Color = global::GridIt.Properties.Settings.Default.ColorGrid;
-            this.colorDialogGrid.SolidColorOnly = true;
-            // 
-            // btnApply
-            // 
-            this.btnApply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnApply.Location = new System.Drawing.Point(0, 211);
-            this.btnApply.Margin = new System.Windows.Forms.Padding(0);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(102, 30);
-            this.btnApply.TabIndex = 1;
-            this.btnApply.Text = "Apply";
-            this.btnApply.UseVisualStyleBackColor = true;
-            this.btnApply.Click += new System.EventHandler(this.BtnApply_Click);
-            // 
             // btnSaveSettings
             // 
             this.btnSaveSettings.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -360,30 +455,11 @@
             this.btnSaveSettings.UseVisualStyleBackColor = true;
             this.btnSaveSettings.Click += new System.EventHandler(this.BtnSaveSettings_Click);
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.cbxWindowsStartup, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnSaveSettings, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tabGuiContainer, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnApply, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(204, 271);
-            this.tableLayoutPanel1.TabIndex = 3;
-            // 
             // cbxWindowsStartup
             // 
             this.cbxWindowsStartup.Appearance = System.Windows.Forms.Appearance.Button;
             this.cbxWindowsStartup.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.cbxWindowsStartup, 2);
+            this.tabMainPanel.SetColumnSpan(this.cbxWindowsStartup, 2);
             this.cbxWindowsStartup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxWindowsStartup.Location = new System.Drawing.Point(0, 241);
             this.cbxWindowsStartup.Margin = new System.Windows.Forms.Padding(0);
@@ -396,20 +472,37 @@
             this.cbxWindowsStartup.UseVisualStyleBackColor = true;
             this.cbxWindowsStartup.CheckedChanged += new System.EventHandler(this.CbxWindowsStartup_CheckedChanged);
             // 
-            // notifyIcon
+            // tabMainPanel
             // 
-            this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = "GridIt";
-            this.notifyIcon.Visible = true;
-            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseDoubleClick);
+            this.tabMainPanel.ColumnCount = 2;
+            this.tabMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tabMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tabMainPanel.Controls.Add(this.cbxWindowsStartup, 0, 2);
+            this.tabMainPanel.Controls.Add(this.btnSaveSettings, 1, 1);
+            this.tabMainPanel.Controls.Add(this.tabGuiContainer, 0, 0);
+            this.tabMainPanel.Controls.Add(this.btnApply, 0, 1);
+            this.tabMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabMainPanel.Location = new System.Drawing.Point(0, 0);
+            this.tabMainPanel.Name = "tabMainPanel";
+            this.tabMainPanel.RowCount = 3;
+            this.tabMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tabMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tabMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tabMainPanel.Size = new System.Drawing.Size(204, 271);
+            this.tabMainPanel.TabIndex = 3;
+            // 
+            // colorDialogGrid
+            // 
+            this.colorDialogGrid.AllowFullOpen = false;
+            this.colorDialogGrid.Color = System.Drawing.Color.Red;
+            this.colorDialogGrid.SolidColorOnly = true;
             // 
             // GridIt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(204, 271);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tabMainPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(220, 310);
             this.MinimumSize = new System.Drawing.Size(220, 310);
@@ -428,39 +521,47 @@
             this.tabGuiContainer.ResumeLayout(false);
             this.tabFullGrid.ResumeLayout(false);
             this.tabFullGrid.PerformLayout();
+            this.tabCrosshair.ResumeLayout(false);
+            this.panelCrosshair.ResumeLayout(false);
+            this.panelCrosshair.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCrosshairThickness)).EndInit();
             this.tabAbout.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tabMainPanel.ResumeLayout(false);
+            this.tabMainPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tabGuiContainer;
-        private System.Windows.Forms.TabPage tabFullGrid;
-        private System.Windows.Forms.TabPage tabCrosshair;
-        private System.Windows.Forms.TabPage tabRadialGrid;
-        private System.Windows.Forms.TabPage tabAbout;
-        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.ColorDialog colorDialogGrid;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.TabControl tabGuiContainer;
+        private System.Windows.Forms.TableLayoutPanel tabMainPanel;
+        private System.Windows.Forms.CheckBox cbxWindowsStartup;
+        private System.Windows.Forms.Button btnSaveSettings;
+        private System.Windows.Forms.TabPage tabFullGrid;
+        private System.Windows.Forms.Button btnOnOffFullGrid;
         private System.Windows.Forms.NumericUpDown numGridOffsetX;
+        private System.Windows.Forms.Label lblGridColor;
         private System.Windows.Forms.NumericUpDown numGridOffsetY;
         private System.Windows.Forms.NumericUpDown numGridSizeX;
         private System.Windows.Forms.NumericUpDown numGridSizeY;
         private System.Windows.Forms.NumericUpDown numGridThickness;
-        private System.Windows.Forms.Button btnOnOffFullGrid;
-        private System.Windows.Forms.Label lblGridColor;
         private System.Windows.Forms.Label lblGridOffsetX;
         private System.Windows.Forms.Label lblGridOffsetY;
         private System.Windows.Forms.Label lblGridSizeX;
         private System.Windows.Forms.Label lblGridSizeY;
         private System.Windows.Forms.Label lblGridThickness;
         private System.Windows.Forms.Label lblGridColorLbl;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button btnSaveSettings;
-        private System.Windows.Forms.Button btnApply;
-        private System.Windows.Forms.NotifyIcon notifyIcon;
-        private System.Windows.Forms.CheckBox cbxWindowsStartup;
+        private System.Windows.Forms.TabPage tabCrosshair;
+        private System.Windows.Forms.TableLayoutPanel panelCrosshair;
+        private System.Windows.Forms.TabPage tabRadialGrid;
+        private System.Windows.Forms.TabPage tabAbout;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblCrosshairThickness;
+        private System.Windows.Forms.NumericUpDown numCrosshairThickness;
+        private System.Windows.Forms.Label lblCrosshairColorLbl;
+        private System.Windows.Forms.Label lblCrosshairColor;
     }
 }

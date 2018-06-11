@@ -39,7 +39,7 @@
             this.gridImage.Location = new System.Drawing.Point(0, 0);
             this.gridImage.Margin = new System.Windows.Forms.Padding(0);
             this.gridImage.Name = "gridImage";
-            this.gridImage.Size = new System.Drawing.Size(484, 461);
+            this.gridImage.Size = new System.Drawing.Size(100, 100);
             this.gridImage.TabIndex = 0;
             this.gridImage.TabStop = false;
             // 
@@ -48,7 +48,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.ClientSize = new System.Drawing.Size(100, 100);
             this.Controls.Add(this.gridImage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;

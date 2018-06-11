@@ -8,7 +8,7 @@
     <Setting Name="GridHeight" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">40</Value>
     </Setting>
-    <Setting Name="LineThickness" Type="System.Int32" Scope="User">
+    <Setting Name="GridThickness" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="GridOffsetVertical" Type="System.Int32" Scope="User">
@@ -17,8 +17,14 @@
     <Setting Name="GridOffsetHorizontal" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
-    <Setting Name="ColorGrid" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="GridColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Red</Value>
+    </Setting>
+    <Setting Name="CrosshairThickness" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="CrosshairColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Cyan</Value>
     </Setting>
   </Settings>
 </SettingsFile>

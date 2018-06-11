@@ -20,13 +20,13 @@ namespace GridIt
 
             for (int h = Config.GridOffsetHorizontal; h < Config.DesktopHeight; h += Config.GridHeight)
                 for (int w = 0; w < Config.DesktopWidth; w++)
-                    for (int bh = h; bh < h + Config.LineThickness && bh < Config.DesktopHeight; bh++)
-                        grid.SetPixel(w, bh, Config.ColorGrid);
+                    for (int bh = h; bh < h + Config.GridThickness && bh < Config.DesktopHeight; bh++)
+                        grid.SetPixel(w, bh, Config.GridColor);
 
             for (int w = Config.GridOffsetVertical; w < Config.DesktopWidth; w += Config.GridWidth)
                 for (int h = 0; h < Config.DesktopHeight; h++)
-                    for (int bw = w; bw < w + Config.LineThickness && bw < Config.DesktopWidth; bw++)
-                        grid.SetPixel(bw, h, Config.ColorGrid);
+                    for (int bw = w; bw < w + Config.GridThickness && bw < Config.DesktopWidth; bw++)
+                        grid.SetPixel(bw, h, Config.GridColor);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace GridIt
     public partial class GridIt : Form
     {
         private GridWindow gridWindow;
-        private static bool FullGridShown;        
+        private static bool FullGridShown;
         private int _hotkeyIdCrosshair;
         private int _hotkeyIdFullGrid;
         private int _hotkeyIdRadial;
@@ -44,17 +44,18 @@ namespace GridIt
 
         private void SetGuiControls()
         {
-            numGridOffsetX.Value = Config.GridOffsetHorizontal;
-            numGridOffsetY.Value = Config.GridOffsetVertical;
-            numGridSizeX.Value = Config.GridHeight;
             numGridSizeY.Value = Config.GridWidth;
-            numGridThickness.Value = Config.LineThickness;
-            lblGridColor.BackColor = Config.ColorGrid;
-            colorDialogGrid.Color = Config.ColorGrid;
-            cbxWindowsStartup.CheckState = Config.RunsOnSystemStartup() ? CheckState.Checked 
+            numGridSizeX.Value = Config.GridHeight;
+            lblGridColor.BackColor = Config.GridColor;
+            numGridThickness.Value = Config.GridThickness;
+            numGridOffsetY.Value = Config.GridOffsetVertical;
+            numGridOffsetX.Value = Config.GridOffsetHorizontal;
+            lblCrosshairColor.BackColor = Config.CrosshairColor;
+            numCrosshairThickness.Value = Config.CrosshairThickness;
+            cbxWindowsStartup.CheckState = Config.RunsOnSystemStartup() ? CheckState.Checked
                                                                         : CheckState.Unchecked;
 
-            if (cbxWindowsStartup.CheckState==CheckState.Unchecked)
+            if (cbxWindowsStartup.CheckState == CheckState.Unchecked)
                 cbxWindowsStartup.Text = Messages.SetRunOnStartup;
         }
 
@@ -62,10 +63,12 @@ namespace GridIt
         {
             Config.GridOffsetHorizontal = (int)numGridOffsetX.Value;
             Config.GridOffsetVertical = (int)numGridOffsetY.Value;
+            Config.GridThickness = (int)numGridThickness.Value;
             Config.GridHeight = (int)numGridSizeX.Value;
             Config.GridWidth = (int)numGridSizeY.Value;
-            Config.LineThickness = (int)numGridThickness.Value;
-            Config.ColorGrid = lblGridColor.BackColor;
+            Config.GridColor = lblGridColor.BackColor;
+            Config.CrosshairThickness = (int)numCrosshairThickness.Value;
+            Config.CrosshairColor = lblCrosshairColor.BackColor;
         }
 
         private void BtnOnOffFullGrid_Click(object sender, EventArgs e)
@@ -96,9 +99,12 @@ namespace GridIt
 
         private void LblGridColor_Click(object sender, EventArgs e)
         {
-            colorDialogGrid.ShowDialog();
-            Config.ColorGrid = colorDialogGrid.Color;
-            lblGridColor.BackColor = colorDialogGrid.Color;
+            SetColor((Label)sender, ref Config.GridColor);
+        }
+
+        private void LblCrosshairColor_Click(object sender, EventArgs e)
+        {
+            SetColor((Label)sender, ref Config.CrosshairColor);
         }
 
         private void BtnApply_Click(object sender, EventArgs e)
@@ -146,7 +152,7 @@ namespace GridIt
         {
             UnregisterHotkeys();
         }
-        
+
         private void NotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Show();
@@ -165,6 +171,14 @@ namespace GridIt
                 cbxWindowsStartup.Text = Messages.SetRunOnStartup;
                 Config.SetRunOnSystemStartup(false);
             }
+        }
+
+        private void SetColor(Label label, ref System.Drawing.Color color)
+        {
+            colorDialogGrid.Color = color;
+            colorDialogGrid.ShowDialog();
+            color = colorDialogGrid.Color;
+            label.BackColor = colorDialogGrid.Color;
         }
     }
 }

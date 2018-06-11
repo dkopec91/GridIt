@@ -50,12 +50,12 @@ namespace GridIt.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("2")]
-        public int LineThickness {
+        public int GridThickness {
             get {
-                return ((int)(this["LineThickness"]));
+                return ((int)(this["GridThickness"]));
             }
             set {
-                this["LineThickness"] = value;
+                this["GridThickness"] = value;
             }
         }
         
@@ -86,12 +86,36 @@ namespace GridIt.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Red")]
-        public global::System.Drawing.Color ColorGrid {
+        public global::System.Drawing.Color GridColor {
             get {
-                return ((global::System.Drawing.Color)(this["ColorGrid"]));
+                return ((global::System.Drawing.Color)(this["GridColor"]));
             }
             set {
-                this["ColorGrid"] = value;
+                this["GridColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int CrosshairThickness {
+            get {
+                return ((int)(this["CrosshairThickness"]));
+            }
+            set {
+                this["CrosshairThickness"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Cyan")]
+        public global::System.Drawing.Color CrosshairColor {
+            get {
+                return ((global::System.Drawing.Color)(this["CrosshairColor"]));
+            }
+            set {
+                this["CrosshairColor"] = value;
             }
         }
     }

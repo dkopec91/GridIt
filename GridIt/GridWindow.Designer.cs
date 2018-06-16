@@ -34,7 +34,7 @@
             // 
             // gridImage
             // 
-            this.gridImage.BackColor = System.Drawing.Color.White;
+            this.gridImage.BackColor = System.Drawing.Color.Transparent;
             this.gridImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridImage.Location = new System.Drawing.Point(0, 0);
             this.gridImage.Margin = new System.Windows.Forms.Padding(0);
@@ -47,9 +47,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(100, 100);
             this.Controls.Add(this.gridImage);
+            this.ForeColor = System.Drawing.Color.Transparent;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

@@ -54,6 +54,7 @@
             this.numCrosshairThickness = new System.Windows.Forms.NumericUpDown();
             this.lblCrosshairColorLbl = new System.Windows.Forms.Label();
             this.lblCrosshairColor = new System.Windows.Forms.Label();
+            this.btnOnOffCrosshair = new System.Windows.Forms.Button();
             this.tabRadialGrid = new System.Windows.Forms.TabPage();
             this.tabAbout = new System.Windows.Forms.TabPage();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -100,12 +101,12 @@
             panelFullGrid.Location = new System.Drawing.Point(3, 3);
             panelFullGrid.Name = "panelFullGrid";
             panelFullGrid.RowCount = 6;
-            panelFullGrid.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            panelFullGrid.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            panelFullGrid.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            panelFullGrid.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            panelFullGrid.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            panelFullGrid.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            panelFullGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            panelFullGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            panelFullGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            panelFullGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            panelFullGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            panelFullGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             panelFullGrid.Size = new System.Drawing.Size(189, 156);
             panelFullGrid.TabIndex = 4;
             // 
@@ -131,11 +132,11 @@
             this.lblGridColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblGridColor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblGridColor.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblGridColor.Location = new System.Drawing.Point(97, 133);
+            this.lblGridColor.Location = new System.Drawing.Point(97, 128);
             this.lblGridColor.Margin = new System.Windows.Forms.Padding(3);
             this.lblGridColor.MinimumSize = new System.Drawing.Size(2, 20);
             this.lblGridColor.Name = "lblGridColor";
-            this.lblGridColor.Size = new System.Drawing.Size(89, 20);
+            this.lblGridColor.Size = new System.Drawing.Size(89, 25);
             this.lblGridColor.TabIndex = 2;
             this.lblGridColor.Click += new System.EventHandler(this.LblGridColor_Click);
             // 
@@ -143,7 +144,7 @@
             // 
             this.numGridOffsetY.AutoSize = true;
             this.numGridOffsetY.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numGridOffsetY.Location = new System.Drawing.Point(97, 29);
+            this.numGridOffsetY.Location = new System.Drawing.Point(97, 28);
             this.numGridOffsetY.Name = "numGridOffsetY";
             this.numGridOffsetY.Size = new System.Drawing.Size(89, 20);
             this.numGridOffsetY.TabIndex = 5;
@@ -153,7 +154,7 @@
             // 
             this.numGridSizeX.AutoSize = true;
             this.numGridSizeX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numGridSizeX.Location = new System.Drawing.Point(97, 55);
+            this.numGridSizeX.Location = new System.Drawing.Point(97, 53);
             this.numGridSizeX.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -168,7 +169,7 @@
             // 
             this.numGridSizeY.AutoSize = true;
             this.numGridSizeY.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numGridSizeY.Location = new System.Drawing.Point(97, 81);
+            this.numGridSizeY.Location = new System.Drawing.Point(97, 78);
             this.numGridSizeY.Name = "numGridSizeY";
             this.numGridSizeY.Size = new System.Drawing.Size(89, 20);
             this.numGridSizeY.TabIndex = 7;
@@ -178,7 +179,7 @@
             // 
             this.numGridThickness.AutoSize = true;
             this.numGridThickness.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numGridThickness.Location = new System.Drawing.Point(97, 107);
+            this.numGridThickness.Location = new System.Drawing.Point(97, 103);
             this.numGridThickness.Maximum = new decimal(new int[] {
             20,
             0,
@@ -205,7 +206,7 @@
             this.lblGridOffsetX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblGridOffsetX.Location = new System.Drawing.Point(3, 0);
             this.lblGridOffsetX.Name = "lblGridOffsetX";
-            this.lblGridOffsetX.Size = new System.Drawing.Size(88, 26);
+            this.lblGridOffsetX.Size = new System.Drawing.Size(88, 25);
             this.lblGridOffsetX.TabIndex = 9;
             this.lblGridOffsetX.Text = "Horizontal offset";
             this.lblGridOffsetX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -214,9 +215,9 @@
             // 
             this.lblGridOffsetY.AutoSize = true;
             this.lblGridOffsetY.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblGridOffsetY.Location = new System.Drawing.Point(3, 26);
+            this.lblGridOffsetY.Location = new System.Drawing.Point(3, 25);
             this.lblGridOffsetY.Name = "lblGridOffsetY";
-            this.lblGridOffsetY.Size = new System.Drawing.Size(88, 26);
+            this.lblGridOffsetY.Size = new System.Drawing.Size(88, 25);
             this.lblGridOffsetY.TabIndex = 10;
             this.lblGridOffsetY.Text = "Vertical offset";
             this.lblGridOffsetY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -225,9 +226,9 @@
             // 
             this.lblGridSizeX.AutoSize = true;
             this.lblGridSizeX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblGridSizeX.Location = new System.Drawing.Point(3, 52);
+            this.lblGridSizeX.Location = new System.Drawing.Point(3, 50);
             this.lblGridSizeX.Name = "lblGridSizeX";
-            this.lblGridSizeX.Size = new System.Drawing.Size(88, 26);
+            this.lblGridSizeX.Size = new System.Drawing.Size(88, 25);
             this.lblGridSizeX.TabIndex = 11;
             this.lblGridSizeX.Text = "Horizontal size";
             this.lblGridSizeX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -236,9 +237,9 @@
             // 
             this.lblGridSizeY.AutoSize = true;
             this.lblGridSizeY.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblGridSizeY.Location = new System.Drawing.Point(3, 78);
+            this.lblGridSizeY.Location = new System.Drawing.Point(3, 75);
             this.lblGridSizeY.Name = "lblGridSizeY";
-            this.lblGridSizeY.Size = new System.Drawing.Size(88, 26);
+            this.lblGridSizeY.Size = new System.Drawing.Size(88, 25);
             this.lblGridSizeY.TabIndex = 12;
             this.lblGridSizeY.Text = "Vertical size";
             this.lblGridSizeY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -247,9 +248,9 @@
             // 
             this.lblGridThickness.AutoSize = true;
             this.lblGridThickness.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblGridThickness.Location = new System.Drawing.Point(3, 104);
+            this.lblGridThickness.Location = new System.Drawing.Point(3, 100);
             this.lblGridThickness.Name = "lblGridThickness";
-            this.lblGridThickness.Size = new System.Drawing.Size(88, 26);
+            this.lblGridThickness.Size = new System.Drawing.Size(88, 25);
             this.lblGridThickness.TabIndex = 13;
             this.lblGridThickness.Text = "Line thickness";
             this.lblGridThickness.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -258,9 +259,9 @@
             // 
             this.lblGridColorLbl.AutoSize = true;
             this.lblGridColorLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblGridColorLbl.Location = new System.Drawing.Point(3, 130);
+            this.lblGridColorLbl.Location = new System.Drawing.Point(3, 125);
             this.lblGridColorLbl.Name = "lblGridColorLbl";
-            this.lblGridColorLbl.Size = new System.Drawing.Size(88, 26);
+            this.lblGridColorLbl.Size = new System.Drawing.Size(88, 31);
             this.lblGridColorLbl.TabIndex = 14;
             this.lblGridColorLbl.Text = "Line color";
             this.lblGridColorLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -347,13 +348,18 @@
             this.panelCrosshair.Controls.Add(this.numCrosshairThickness, 1, 0);
             this.panelCrosshair.Controls.Add(this.lblCrosshairColorLbl, 0, 1);
             this.panelCrosshair.Controls.Add(this.lblCrosshairColor, 1, 1);
+            this.panelCrosshair.Controls.Add(this.btnOnOffCrosshair, 0, 6);
             this.panelCrosshair.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCrosshair.Location = new System.Drawing.Point(3, 3);
             this.panelCrosshair.Name = "panelCrosshair";
-            this.panelCrosshair.RowCount = 3;
-            this.panelCrosshair.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panelCrosshair.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panelCrosshair.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.panelCrosshair.RowCount = 7;
+            this.panelCrosshair.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.panelCrosshair.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.panelCrosshair.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.panelCrosshair.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.panelCrosshair.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.panelCrosshair.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.panelCrosshair.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panelCrosshair.Size = new System.Drawing.Size(189, 178);
             this.panelCrosshair.TabIndex = 0;
             // 
@@ -363,7 +369,7 @@
             this.lblCrosshairThickness.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCrosshairThickness.Location = new System.Drawing.Point(3, 0);
             this.lblCrosshairThickness.Name = "lblCrosshairThickness";
-            this.lblCrosshairThickness.Size = new System.Drawing.Size(88, 24);
+            this.lblCrosshairThickness.Size = new System.Drawing.Size(88, 26);
             this.lblCrosshairThickness.TabIndex = 0;
             this.lblCrosshairThickness.Text = "Line thickness";
             this.lblCrosshairThickness.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -392,9 +398,9 @@
             // 
             this.lblCrosshairColorLbl.AutoSize = true;
             this.lblCrosshairColorLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCrosshairColorLbl.Location = new System.Drawing.Point(3, 24);
+            this.lblCrosshairColorLbl.Location = new System.Drawing.Point(3, 26);
             this.lblCrosshairColorLbl.Name = "lblCrosshairColorLbl";
-            this.lblCrosshairColorLbl.Size = new System.Drawing.Size(88, 24);
+            this.lblCrosshairColorLbl.Size = new System.Drawing.Size(88, 26);
             this.lblCrosshairColorLbl.TabIndex = 2;
             this.lblCrosshairColorLbl.Text = "Line collor";
             this.lblCrosshairColorLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -405,12 +411,25 @@
             this.lblCrosshairColor.BackColor = System.Drawing.Color.Cyan;
             this.lblCrosshairColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCrosshairColor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCrosshairColor.Location = new System.Drawing.Point(97, 27);
+            this.lblCrosshairColor.Location = new System.Drawing.Point(97, 29);
             this.lblCrosshairColor.Margin = new System.Windows.Forms.Padding(3);
             this.lblCrosshairColor.Name = "lblCrosshairColor";
-            this.lblCrosshairColor.Size = new System.Drawing.Size(89, 18);
+            this.lblCrosshairColor.Size = new System.Drawing.Size(89, 20);
             this.lblCrosshairColor.TabIndex = 3;
             this.lblCrosshairColor.Click += new System.EventHandler(this.LblCrosshairColor_Click);
+            // 
+            // btnOnOffCrosshair
+            // 
+            this.panelCrosshair.SetColumnSpan(this.btnOnOffCrosshair, 2);
+            this.btnOnOffCrosshair.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnOnOffCrosshair.Location = new System.Drawing.Point(0, 156);
+            this.btnOnOffCrosshair.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOnOffCrosshair.Name = "btnOnOffCrosshair";
+            this.btnOnOffCrosshair.Size = new System.Drawing.Size(189, 22);
+            this.btnOnOffCrosshair.TabIndex = 4;
+            this.btnOnOffCrosshair.Text = "Show Crosshair (Ctrl + 2)";
+            this.btnOnOffCrosshair.UseVisualStyleBackColor = true;
+            this.btnOnOffCrosshair.Click += new System.EventHandler(this.BtnOnOffCrosshair_Click);
             // 
             // tabRadialGrid
             // 
@@ -563,5 +582,6 @@
         private System.Windows.Forms.NumericUpDown numCrosshairThickness;
         private System.Windows.Forms.Label lblCrosshairColorLbl;
         private System.Windows.Forms.Label lblCrosshairColor;
+        private System.Windows.Forms.Button btnOnOffCrosshair;
     }
 }

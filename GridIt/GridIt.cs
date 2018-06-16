@@ -6,7 +6,9 @@ namespace GridIt
     public partial class GridIt : Form
     {
         private GridWindow gridWindow;
+        private CrosshairWindow crosshairWindow;
         private static bool FullGridShown;
+        private static bool CrosshairShown;
         private int _hotkeyIdCrosshair;
         private int _hotkeyIdFullGrid;
         private int _hotkeyIdRadial;
@@ -111,13 +113,13 @@ namespace GridIt
         {
             GuiToConfig();
             if (gridWindow != null) gridWindow.DrawImage();
+            if (crosshairWindow != null) crosshairWindow.DrawCrosshair();
         }
 
         private void BtnSaveSettings_Click(object sender, EventArgs e)
         {
-            GuiToConfig();
+            BtnApply_Click(this, null);
             Config.SaveConfiguration();
-            if (gridWindow != null) gridWindow.DrawImage();
         }
 
         protected override void WndProc(ref Message m)
@@ -127,10 +129,10 @@ namespace GridIt
                 if (m.WParam.ToInt32() == _hotkeyIdFullGrid)
                     BtnOnOffFullGrid_Click(this, null);
                 else if (m.WParam.ToInt32() == _hotkeyIdCrosshair)
-                    throw new NotImplementedException("Crosshair overlay not implemented");
+                    BtnOnOffCrosshair_Click(this, null);
                 else if (m.WParam.ToInt32() == _hotkeyIdRadial)
                     throw new NotImplementedException("Radial overlay not implemented");
-            }
+            }            
             base.WndProc(ref m);
         }
 
@@ -179,6 +181,32 @@ namespace GridIt
             colorDialogGrid.ShowDialog();
             color = colorDialogGrid.Color;
             label.BackColor = colorDialogGrid.Color;
+        }
+
+        private void BtnOnOffCrosshair_Click(object sender, EventArgs e)
+        {
+            if (CrosshairShown)
+            {
+                btnOnOffCrosshair.Text = "Show Crosshair (Ctrl + 2)";
+                crosshairWindow.Hide();
+            }
+            else
+            {
+                if (crosshairWindow == null)
+                {
+                    crosshairWindow = new CrosshairWindow
+                    {
+                        StartPosition = FormStartPosition.Manual,
+                        Width = Config.DesktopWidth,
+                        Height = Config.DesktopHeight,
+                        Left = 0,
+                        Top = 0
+                    };
+                }
+                crosshairWindow.Show();
+                btnOnOffCrosshair.Text = "Hide Crosshair (Ctrl + 2)";
+            }
+            CrosshairShown = !CrosshairShown;
         }
     }
 }

@@ -323,4 +323,4 @@ ASALocalRun/
 # NVidia Nsight GPU debugger configuration file
 *.nvuser
 
-sh.exe.stackdump
+*.exe.stackdump

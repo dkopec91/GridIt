@@ -53,17 +53,25 @@ namespace GridIt
         #endregion
 
         #region Mouse Hook
+        private static int _mouseHook = 0;
         public const int WH_MOUSE_LL = 14;
         public delegate int HookProc(int nCode, IntPtr wParam, IntPtr lParam);
 
         [DllImport("user32.dll")]
-        public static extern int SetWindowsHookEx(int idHook, HookProc lpfn, IntPtr hInstance, int threadId);
+        private static extern int SetWindowsHookEx(int idHook, HookProc lpfn, IntPtr hInstance, int threadId);
 
         [DllImport("user32.dll")]
         public static extern int CallNextHookEx(int idHook, int nCode, IntPtr wParam, IntPtr lParam);
 
         [DllImport("user32.dll")]
-        public static extern bool UnhookWindowsHookEx(int idHook);
+        private static extern bool UnhookWindowsHookEx(int idHook);
+
+        public static void SetGlobalMouseHook(HookProc MouseMoveDelegate)
+        {
+            _mouseHook = SetWindowsHookEx(WH_MOUSE_LL, MouseMoveDelegate, (IntPtr)0, 0);
+        }
+
+        public static void UnhookMouseHook() => UnhookWindowsHookEx(_mouseHook);
         #endregion
     }
 }

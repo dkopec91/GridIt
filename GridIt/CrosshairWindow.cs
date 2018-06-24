@@ -12,6 +12,8 @@ namespace GridIt
 {
     public partial class CrosshairWindow : Form
     {
+        private static WindowsApi.HookProc _hook;
+
         public CrosshairWindow()
         {
             InitializeComponent();
@@ -32,28 +34,19 @@ namespace GridIt
         protected override void SetVisibleCore(bool value)
         {
             if (value) StartTracking();
+            else WindowsApi.UnhookMouseHook();
             base.SetVisibleCore(value);
         }
 
-        private async void StartTracking()
+        private void StartTracking()
         {
-            var cursorUpdate = new Progress<Point>(p =>
-            {
-                crosshairAxisX.Top = p.Y;
-                crosshairAxisY.Left = p.X;
-            });
-            await Task.Factory.StartNew(() => ReportCursorMovement(cursorUpdate), 
-                                              TaskCreationOptions.LongRunning);
-        }
-        
-        private void ReportCursorMovement(IProgress<Point> position)
-        {
-            while (true)
-            {
-                position.Report(System.Windows.Forms.Cursor.Position);
-                System.Threading.Thread.Sleep(200);
-                if (!this.Visible) break;
-            }
+            _hook = (int x, IntPtr wParam, IntPtr lParam) =>
+             {
+                 crosshairAxisX.Top = Cursor.Position.Y;
+                 crosshairAxisY.Left = Cursor.Position.X;
+                 return WindowsApi.CallNextHookEx(x, WindowsApi.WH_MOUSE_LL, wParam, lParam);
+             };
+            WindowsApi.SetGlobalMouseHook(_hook);
         }
     }
 }

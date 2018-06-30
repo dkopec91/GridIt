@@ -122,7 +122,7 @@
             0});
             this.numGridOffsetX.Name = "numGridOffsetX";
             this.numGridOffsetX.Size = new System.Drawing.Size(89, 20);
-            this.numGridOffsetX.TabIndex = 4;
+            this.numGridOffsetX.TabIndex = 1;
             this.numGridOffsetX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblGridColor
@@ -137,7 +137,7 @@
             this.lblGridColor.MinimumSize = new System.Drawing.Size(2, 20);
             this.lblGridColor.Name = "lblGridColor";
             this.lblGridColor.Size = new System.Drawing.Size(89, 25);
-            this.lblGridColor.TabIndex = 2;
+            this.lblGridColor.TabIndex = 11;
             this.lblGridColor.Click += new System.EventHandler(this.LblGridColor_Click);
             // 
             // numGridOffsetY
@@ -147,7 +147,7 @@
             this.numGridOffsetY.Location = new System.Drawing.Point(97, 28);
             this.numGridOffsetY.Name = "numGridOffsetY";
             this.numGridOffsetY.Size = new System.Drawing.Size(89, 20);
-            this.numGridOffsetY.TabIndex = 5;
+            this.numGridOffsetY.TabIndex = 3;
             this.numGridOffsetY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numGridSizeX
@@ -162,7 +162,7 @@
             0});
             this.numGridSizeX.Name = "numGridSizeX";
             this.numGridSizeX.Size = new System.Drawing.Size(89, 20);
-            this.numGridSizeX.TabIndex = 6;
+            this.numGridSizeX.TabIndex = 5;
             this.numGridSizeX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numGridSizeY
@@ -192,7 +192,7 @@
             0});
             this.numGridThickness.Name = "numGridThickness";
             this.numGridThickness.Size = new System.Drawing.Size(89, 20);
-            this.numGridThickness.TabIndex = 8;
+            this.numGridThickness.TabIndex = 9;
             this.numGridThickness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numGridThickness.Value = new decimal(new int[] {
             1,
@@ -207,7 +207,7 @@
             this.lblGridOffsetX.Location = new System.Drawing.Point(3, 0);
             this.lblGridOffsetX.Name = "lblGridOffsetX";
             this.lblGridOffsetX.Size = new System.Drawing.Size(88, 25);
-            this.lblGridOffsetX.TabIndex = 9;
+            this.lblGridOffsetX.TabIndex = 0;
             this.lblGridOffsetX.Text = "Horizontal offset";
             this.lblGridOffsetX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -218,7 +218,7 @@
             this.lblGridOffsetY.Location = new System.Drawing.Point(3, 25);
             this.lblGridOffsetY.Name = "lblGridOffsetY";
             this.lblGridOffsetY.Size = new System.Drawing.Size(88, 25);
-            this.lblGridOffsetY.TabIndex = 10;
+            this.lblGridOffsetY.TabIndex = 2;
             this.lblGridOffsetY.Text = "Vertical offset";
             this.lblGridOffsetY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -229,7 +229,7 @@
             this.lblGridSizeX.Location = new System.Drawing.Point(3, 50);
             this.lblGridSizeX.Name = "lblGridSizeX";
             this.lblGridSizeX.Size = new System.Drawing.Size(88, 25);
-            this.lblGridSizeX.TabIndex = 11;
+            this.lblGridSizeX.TabIndex = 4;
             this.lblGridSizeX.Text = "Horizontal size";
             this.lblGridSizeX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -240,7 +240,7 @@
             this.lblGridSizeY.Location = new System.Drawing.Point(3, 75);
             this.lblGridSizeY.Name = "lblGridSizeY";
             this.lblGridSizeY.Size = new System.Drawing.Size(88, 25);
-            this.lblGridSizeY.TabIndex = 12;
+            this.lblGridSizeY.TabIndex = 6;
             this.lblGridSizeY.Text = "Vertical size";
             this.lblGridSizeY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -251,7 +251,7 @@
             this.lblGridThickness.Location = new System.Drawing.Point(3, 100);
             this.lblGridThickness.Name = "lblGridThickness";
             this.lblGridThickness.Size = new System.Drawing.Size(88, 25);
-            this.lblGridThickness.TabIndex = 13;
+            this.lblGridThickness.TabIndex = 8;
             this.lblGridThickness.Text = "Line thickness";
             this.lblGridThickness.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -262,7 +262,7 @@
             this.lblGridColorLbl.Location = new System.Drawing.Point(3, 125);
             this.lblGridColorLbl.Name = "lblGridColorLbl";
             this.lblGridColorLbl.Size = new System.Drawing.Size(88, 31);
-            this.lblGridColorLbl.TabIndex = 14;
+            this.lblGridColorLbl.TabIndex = 10;
             this.lblGridColorLbl.Text = "Line color";
             this.lblGridColorLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -323,7 +323,7 @@
             this.btnOnOffFullGrid.Margin = new System.Windows.Forms.Padding(0);
             this.btnOnOffFullGrid.Name = "btnOnOffFullGrid";
             this.btnOnOffFullGrid.Size = new System.Drawing.Size(189, 22);
-            this.btnOnOffFullGrid.TabIndex = 5;
+            this.btnOnOffFullGrid.TabIndex = 12;
             this.btnOnOffFullGrid.Text = "Show Grid (Ctrl + 1)";
             this.btnOnOffFullGrid.UseVisualStyleBackColor = true;
             this.btnOnOffFullGrid.Click += new System.EventHandler(this.BtnOnOffFullGrid_Click);
@@ -484,7 +484,7 @@
             this.cbxWindowsStartup.Margin = new System.Windows.Forms.Padding(0);
             this.cbxWindowsStartup.Name = "cbxWindowsStartup";
             this.cbxWindowsStartup.Size = new System.Drawing.Size(204, 30);
-            this.cbxWindowsStartup.TabIndex = 6;
+            this.cbxWindowsStartup.TabIndex = 3;
             this.cbxWindowsStartup.Text = "Click to run GridIt on system startup";
             this.cbxWindowsStartup.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbxWindowsStartup.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;

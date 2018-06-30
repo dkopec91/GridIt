@@ -55,6 +55,12 @@
     <Compile Include="CrosshairWindow.Designer.cs">
       <DependentUpon>CrosshairWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="GridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GridControl.Designer.cs">
+      <DependentUpon>GridControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="GridIt.cs">
       <SubType>Form</SubType>
     </Compile>

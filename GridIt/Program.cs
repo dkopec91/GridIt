@@ -13,7 +13,7 @@ namespace GridIt
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GridIt());
+            Application.Run(new MainWindow());
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace GridIt
 {
-    public partial class GridIt : Form
+    public partial class MainWindow : Form
     {
         private GridWindow gridWindow;
         private CrosshairWindow crosshairWindow;
@@ -13,7 +13,7 @@ namespace GridIt
         private int _hotkeyIdFullGrid;
         private int _hotkeyIdRadial;
 
-        public GridIt()
+        public MainWindow()
         {
             InitializeComponent();
             Config.DesktopHeight = SystemInformation.VirtualScreen.Height;
@@ -77,7 +77,7 @@ namespace GridIt
         {
             if (FullGridShown)
             {
-                btnOnOffFullGrid.Text = "Show Grid (Ctrl + 1)";
+                btnOnOffFullGrid.Text = Messages.GridShow;
                 gridWindow.Hide();
             }
             else
@@ -94,7 +94,7 @@ namespace GridIt
                     };
                 }
                 gridWindow.Show();
-                btnOnOffFullGrid.Text = "Hide Grid (Ctrl + 1)";
+                btnOnOffFullGrid.Text = Messages.GridHide;
             }
             FullGridShown = !FullGridShown;
         }
@@ -112,7 +112,7 @@ namespace GridIt
         private void BtnApply_Click(object sender, EventArgs e)
         {
             GuiToConfig();
-            if (gridWindow != null) gridWindow.DrawImage();
+            if (gridWindow != null && gridWindow.Visible) gridWindow.Refresh();
             if (crosshairWindow != null) crosshairWindow.DrawCrosshair();
         }
 
@@ -132,7 +132,7 @@ namespace GridIt
                     BtnOnOffCrosshair_Click(this, null);
                 else if (m.WParam.ToInt32() == _hotkeyIdRadial)
                     throw new NotImplementedException("Radial overlay not implemented");
-            }            
+            }
             base.WndProc(ref m);
         }
 
@@ -187,7 +187,7 @@ namespace GridIt
         {
             if (CrosshairShown)
             {
-                btnOnOffCrosshair.Text = "Show Crosshair (Ctrl + 2)";
+                btnOnOffCrosshair.Text = Messages.CrosshairShow;
                 crosshairWindow.Hide();
             }
             else
@@ -204,7 +204,7 @@ namespace GridIt
                     };
                 }
                 crosshairWindow.Show();
-                btnOnOffCrosshair.Text = "Hide Crosshair (Ctrl + 2)";
+                btnOnOffCrosshair.Text = Messages.CrosshairHide;
             }
             CrosshairShown = !CrosshairShown;
         }

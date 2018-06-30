@@ -1,6 +1,6 @@
 ﻿namespace GridIt
 {
-    partial class GridIt
+    partial class MainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TableLayoutPanel panelFullGrid;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GridIt));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.numGridOffsetX = new System.Windows.Forms.NumericUpDown();
             this.lblGridColor = new System.Windows.Forms.Label();
             this.numGridOffsetY = new System.Windows.Forms.NumericUpDown();
@@ -516,7 +516,7 @@
             this.colorDialogGrid.Color = System.Drawing.Color.Red;
             this.colorDialogGrid.SolidColorOnly = true;
             // 
-            // GridIt
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -525,7 +525,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(220, 310);
             this.MinimumSize = new System.Drawing.Size(220, 310);
-            this.Name = "GridIt";
+            this.Name = "MainWindow";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "GridIt";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GridIt_FormClosing);

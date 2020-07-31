@@ -117,11 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CrosshairHide" xml:space="preserve">
+    <value>Hide Crosshair (Ctrl + 2)</value>
+  </data>
+  <data name="CrosshairShow" xml:space="preserve">
+    <value>Show Crosshair (Ctrl + 2)</value>
+  </data>
+  <data name="GridHide" xml:space="preserve">
+    <value>Hide Grid (Ctrl + 1)</value>
+  </data>
+  <data name="GridShow" xml:space="preserve">
+    <value>Show Grid (Ctrl + 1)</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SetRunOnStartup" xml:space="preserve">
+    <value>Click to run GridIt on system startup</value>
+  </data>
+  <data name="UnsetRunOnStartup" xml:space="preserve">
+    <value>GridIt will run on system startup</value>
   </data>
 </root>

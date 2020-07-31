@@ -61,6 +61,42 @@ namespace GridIt.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hide Crosshair (Ctrl + 2).
+        /// </summary>
+        internal static string CrosshairHide {
+            get {
+                return ResourceManager.GetString("CrosshairHide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Crosshair (Ctrl + 2).
+        /// </summary>
+        internal static string CrosshairShow {
+            get {
+                return ResourceManager.GetString("CrosshairShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide Grid (Ctrl + 1).
+        /// </summary>
+        internal static string GridHide {
+            get {
+                return ResourceManager.GetString("GridHide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Grid (Ctrl + 1).
+        /// </summary>
+        internal static string GridShow {
+            get {
+                return ResourceManager.GetString("GridShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon icon {
@@ -77,6 +113,24 @@ namespace GridIt.Properties {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click to run GridIt on system startup.
+        /// </summary>
+        internal static string SetRunOnStartup {
+            get {
+                return ResourceManager.GetString("SetRunOnStartup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GridIt will run on system startup.
+        /// </summary>
+        internal static string UnsetRunOnStartup {
+            get {
+                return ResourceManager.GetString("UnsetRunOnStartup", resourceCulture);
             }
         }
     }

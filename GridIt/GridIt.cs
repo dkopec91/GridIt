@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GridIt.Properties;
+using System;
 using System.Windows.Forms;
 
 namespace GridIt
@@ -60,7 +61,7 @@ namespace GridIt
                                                                         : CheckState.Unchecked;
 
             if (cbxWindowsStartup.CheckState == CheckState.Unchecked)
-                cbxWindowsStartup.Text = Messages.SetRunOnStartup;
+                cbxWindowsStartup.Text = Resources.SetRunOnStartup;
 
             lblGitHub.Links[0].LinkData = "https://github.com/dkopec91/GridIt";
         }
@@ -81,7 +82,7 @@ namespace GridIt
         {
             if (FullGridShown)
             {
-                btnOnOffFullGrid.Text = Messages.GridShow;
+                btnOnOffFullGrid.Text = Resources.GridShow;
                 gridWindow.Hide();
             }
             else
@@ -98,7 +99,7 @@ namespace GridIt
                     };
                 }
                 gridWindow.Show();
-                btnOnOffFullGrid.Text = Messages.GridHide;
+                btnOnOffFullGrid.Text = Resources.GridHide;
             }
             FullGridShown = !FullGridShown;
         }
@@ -169,12 +170,12 @@ namespace GridIt
         {
             if (cbxWindowsStartup.CheckState == CheckState.Checked)
             {
-                cbxWindowsStartup.Text = Messages.UnsetRunOnStartup;
+                cbxWindowsStartup.Text = Resources.UnsetRunOnStartup;
                 Config.SetRunOnSystemStartup(true);
             }
             else
             {
-                cbxWindowsStartup.Text = Messages.SetRunOnStartup;
+                cbxWindowsStartup.Text = Resources.SetRunOnStartup;
                 Config.SetRunOnSystemStartup(false);
             }
         }
@@ -191,7 +192,7 @@ namespace GridIt
         {
             if (CrosshairShown)
             {
-                btnOnOffCrosshair.Text = Messages.CrosshairShow;
+                btnOnOffCrosshair.Text = Resources.CrosshairShow;
                 crosshairWindow.Hide();
             }
             else
@@ -208,7 +209,7 @@ namespace GridIt
                     };
                 }
                 crosshairWindow.Show();
-                btnOnOffCrosshair.Text = Messages.CrosshairHide;
+                btnOnOffCrosshair.Text = Resources.CrosshairHide;
             }
             CrosshairShown = !CrosshairShown;
         }

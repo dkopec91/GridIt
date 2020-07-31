@@ -61,6 +61,8 @@ namespace GridIt
 
             if (cbxWindowsStartup.CheckState == CheckState.Unchecked)
                 cbxWindowsStartup.Text = Messages.SetRunOnStartup;
+
+            lblGitHub.Links[0].LinkData = "https://github.com/dkopec91/GridIt";
         }
 
         private void GuiToConfig()
@@ -209,6 +211,13 @@ namespace GridIt
                 btnOnOffCrosshair.Text = Messages.CrosshairHide;
             }
             CrosshairShown = !CrosshairShown;
+        }
+
+        private void lblGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.lblGitHub.Links[0].Visited = true;
+            string target = e.Link.LinkData as string;
+            System.Diagnostics.Process.Start(target);
         }
     }
 }

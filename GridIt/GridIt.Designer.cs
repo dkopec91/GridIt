@@ -55,9 +55,9 @@
             this.lblCrosshairColorLbl = new System.Windows.Forms.Label();
             this.lblCrosshairColor = new System.Windows.Forms.Label();
             this.btnOnOffCrosshair = new System.Windows.Forms.Button();
-            this.tabRadialGrid = new System.Windows.Forms.TabPage();
             this.tabAbout = new System.Windows.Forms.TabPage();
-            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblGitHub = new System.Windows.Forms.LinkLabel();
+            this.picLogo = new System.Windows.Forms.PictureBox();
             this.btnSaveSettings = new System.Windows.Forms.Button();
             this.cbxWindowsStartup = new System.Windows.Forms.CheckBox();
             this.tabMainPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -75,6 +75,7 @@
             this.panelCrosshair.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCrosshairThickness)).BeginInit();
             this.tabAbout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.tabMainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -291,15 +292,16 @@
             this.tabMainPanel.SetColumnSpan(this.tabGuiContainer, 2);
             this.tabGuiContainer.Controls.Add(this.tabFullGrid);
             this.tabGuiContainer.Controls.Add(this.tabCrosshair);
-            this.tabGuiContainer.Controls.Add(this.tabRadialGrid);
             this.tabGuiContainer.Controls.Add(this.tabAbout);
             this.tabGuiContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabGuiContainer.ItemSize = new System.Drawing.Size(65, 18);
             this.tabGuiContainer.Location = new System.Drawing.Point(1, 1);
             this.tabGuiContainer.Margin = new System.Windows.Forms.Padding(1, 1, 0, 0);
             this.tabGuiContainer.Name = "tabGuiContainer";
             this.tabGuiContainer.Padding = new System.Drawing.Point(3, 3);
             this.tabGuiContainer.SelectedIndex = 0;
             this.tabGuiContainer.Size = new System.Drawing.Size(203, 210);
+            this.tabGuiContainer.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabGuiContainer.TabIndex = 0;
             // 
             // tabFullGrid
@@ -431,19 +433,10 @@
             this.btnOnOffCrosshair.UseVisualStyleBackColor = true;
             this.btnOnOffCrosshair.Click += new System.EventHandler(this.BtnOnOffCrosshair_Click);
             // 
-            // tabRadialGrid
-            // 
-            this.tabRadialGrid.Location = new System.Drawing.Point(4, 22);
-            this.tabRadialGrid.Name = "tabRadialGrid";
-            this.tabRadialGrid.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRadialGrid.Size = new System.Drawing.Size(195, 184);
-            this.tabRadialGrid.TabIndex = 2;
-            this.tabRadialGrid.Text = "Radial Grid";
-            this.tabRadialGrid.UseVisualStyleBackColor = true;
-            // 
             // tabAbout
             // 
-            this.tabAbout.Controls.Add(this.lblEmail);
+            this.tabAbout.Controls.Add(this.lblGitHub);
+            this.tabAbout.Controls.Add(this.picLogo);
             this.tabAbout.Location = new System.Drawing.Point(4, 22);
             this.tabAbout.Name = "tabAbout";
             this.tabAbout.Size = new System.Drawing.Size(195, 184);
@@ -451,16 +444,29 @@
             this.tabAbout.Text = "About";
             this.tabAbout.UseVisualStyleBackColor = true;
             // 
-            // lblEmail
+            // lblGitHub
             // 
-            this.lblEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblEmail.Location = new System.Drawing.Point(0, 0);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(195, 184);
-            this.lblEmail.TabIndex = 0;
-            this.lblEmail.Text = "dkopec91@gmail.com";
-            this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblGitHub.AutoSize = true;
+            this.lblGitHub.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGitHub.Location = new System.Drawing.Point(17, 149);
+            this.lblGitHub.Name = "lblGitHub";
+            this.lblGitHub.Size = new System.Drawing.Size(161, 20);
+            this.lblGitHub.TabIndex = 0;
+            this.lblGitHub.TabStop = true;
+            this.lblGitHub.Text = "github.com/dkopec91";
+            this.lblGitHub.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblGitHub_LinkClicked);
+            // 
+            // picLogo
+            // 
+            this.picLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picLogo.Image = global::GridIt.Properties.Resources.logo;
+            this.picLogo.Location = new System.Drawing.Point(0, 0);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(195, 184);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picLogo.TabIndex = 1;
+            this.picLogo.TabStop = false;
             // 
             // btnSaveSettings
             // 
@@ -545,6 +551,8 @@
             this.panelCrosshair.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCrosshairThickness)).EndInit();
             this.tabAbout.ResumeLayout(false);
+            this.tabAbout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.tabMainPanel.ResumeLayout(false);
             this.tabMainPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -575,13 +583,13 @@
         private System.Windows.Forms.Label lblGridColorLbl;
         private System.Windows.Forms.TabPage tabCrosshair;
         private System.Windows.Forms.TableLayoutPanel panelCrosshair;
-        private System.Windows.Forms.TabPage tabRadialGrid;
         private System.Windows.Forms.TabPage tabAbout;
-        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblCrosshairThickness;
         private System.Windows.Forms.NumericUpDown numCrosshairThickness;
         private System.Windows.Forms.Label lblCrosshairColorLbl;
         private System.Windows.Forms.Label lblCrosshairColor;
         private System.Windows.Forms.Button btnOnOffCrosshair;
+        private System.Windows.Forms.LinkLabel lblGitHub;
+        private System.Windows.Forms.PictureBox picLogo;
     }
 }

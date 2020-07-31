@@ -10,7 +10,9 @@ namespace GridIt
         private static string GridIt = "GridIt";
         private static RegistryKey appKey;
         public static int DesktopHeight;
-        public static int DesktopWidth;        
+        public static int DesktopWidth;
+        public static int DesktopLeft;
+        public static int DesktopTop;
         public static int GridWidth;
         public static int GridHeight;
         public static int GridThickness;

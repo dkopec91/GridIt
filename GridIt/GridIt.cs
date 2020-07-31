@@ -18,6 +18,8 @@ namespace GridIt
             InitializeComponent();
             Config.DesktopHeight = SystemInformation.VirtualScreen.Height;
             Config.DesktopWidth = SystemInformation.VirtualScreen.Width;
+            Config.DesktopLeft = SystemInformation.VirtualScreen.Left;
+            Config.DesktopTop = SystemInformation.VirtualScreen.Top;
             Config.LoadConfiguration();
             RegisterHotkeys();
             SetGuiControls();
@@ -89,8 +91,8 @@ namespace GridIt
                         StartPosition = FormStartPosition.Manual,
                         Width = Config.DesktopWidth,
                         Height = Config.DesktopHeight,
-                        Left = 0,
-                        Top = 0
+                        Left = Config.DesktopLeft,
+                        Top = Config.DesktopTop
                     };
                 }
                 gridWindow.Show();
@@ -199,8 +201,8 @@ namespace GridIt
                         StartPosition = FormStartPosition.Manual,
                         Width = Config.DesktopWidth,
                         Height = Config.DesktopHeight,
-                        Left = 0,
-                        Top = 0
+                        Left = Config.DesktopLeft,
+                        Top = Config.DesktopTop
                     };
                 }
                 crosshairWindow.Show();

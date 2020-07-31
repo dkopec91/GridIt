@@ -42,8 +42,8 @@ namespace GridIt
         {
             _hook = (int x, IntPtr wParam, IntPtr lParam) =>
              {
-                 crosshairAxisX.Top = Cursor.Position.Y;
-                 crosshairAxisY.Left = Cursor.Position.X;
+                 crosshairAxisX.Top = Cursor.Position.Y - Config.DesktopTop;
+                 crosshairAxisY.Left = Cursor.Position.X - Config.DesktopLeft;
                  return WindowsApi.CallNextHookEx(x, WindowsApi.WH_MOUSE_LL, wParam, lParam);
              };
             WindowsApi.SetGlobalMouseHook(_hook);

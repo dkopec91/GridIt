@@ -56,6 +56,7 @@
             this.lblCrosshairColor = new System.Windows.Forms.Label();
             this.btnOnOffCrosshair = new System.Windows.Forms.Button();
             this.tabAbout = new System.Windows.Forms.TabPage();
+            this.lblNameAndVersion = new System.Windows.Forms.Label();
             this.lblGitHub = new System.Windows.Forms.LinkLabel();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.btnSaveSettings = new System.Windows.Forms.Button();
@@ -270,6 +271,8 @@
             // notifyIcon
             // 
             this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon.BalloonTipText = "Runing in background";
+            this.notifyIcon.BalloonTipTitle = "GridIt";
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "GridIt";
             this.notifyIcon.Visible = true;
@@ -435,6 +438,7 @@
             // 
             // tabAbout
             // 
+            this.tabAbout.Controls.Add(this.lblNameAndVersion);
             this.tabAbout.Controls.Add(this.lblGitHub);
             this.tabAbout.Controls.Add(this.picLogo);
             this.tabAbout.Location = new System.Drawing.Point(4, 22);
@@ -443,6 +447,18 @@
             this.tabAbout.TabIndex = 3;
             this.tabAbout.Text = "About";
             this.tabAbout.UseVisualStyleBackColor = true;
+            // 
+            // lblNameAndVersion
+            // 
+            this.lblNameAndVersion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblNameAndVersion.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameAndVersion.Location = new System.Drawing.Point(0, 0);
+            this.lblNameAndVersion.Name = "lblNameAndVersion";
+            this.lblNameAndVersion.Padding = new System.Windows.Forms.Padding(0, 15, 0, 0);
+            this.lblNameAndVersion.Size = new System.Drawing.Size(195, 45);
+            this.lblNameAndVersion.TabIndex = 2;
+            this.lblNameAndVersion.Text = "GridIt 1.0.0.0";
+            this.lblNameAndVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblGitHub
             // 
@@ -591,5 +607,6 @@
         private System.Windows.Forms.Button btnOnOffCrosshair;
         private System.Windows.Forms.LinkLabel lblGitHub;
         private System.Windows.Forms.PictureBox picLogo;
+        private System.Windows.Forms.Label lblNameAndVersion;
     }
 }

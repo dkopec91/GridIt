@@ -50,10 +50,7 @@ namespace GridIt
             Settings.Default.Save();
         }
 
-        public static bool RunsOnSystemStartup()
-        {
-            return (appKey.GetValue(GridIt) != null);
-        }
+        public static bool RunsOnSystemStartup => appKey.GetValue(GridIt) != null;
 
         public static void SetRunOnSystemStartup(bool runOnSystemStartup)
         {

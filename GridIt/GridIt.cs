@@ -13,6 +13,7 @@ namespace GridIt
         private int _hotkeyIdCrosshair;
         private int _hotkeyIdFullGrid;
         private int _hotkeyIdRadial;
+        public string appNameAndVersion = $"GridIt {typeof(MainWindow).Assembly.GetName().Version}";
 
         public MainWindow()
         {
@@ -24,6 +25,14 @@ namespace GridIt
             Config.LoadConfiguration();
             RegisterHotkeys();
             SetGuiControls();
+
+            if (Config.RunsOnSystemStartup)
+            {
+                notifyIcon.BalloonTipTitle = appNameAndVersion;
+                notifyIcon.Visible = true;
+                notifyIcon.ShowBalloonTip(500);
+                this.WindowState = FormWindowState.Minimized;
+            }
         }
 
         private void RegisterHotkeys()
@@ -57,13 +66,14 @@ namespace GridIt
             numGridOffsetX.Value = Config.GridOffsetHorizontal;
             lblCrosshairColor.BackColor = Config.CrosshairColor;
             numCrosshairThickness.Value = Config.CrosshairThickness;
-            cbxWindowsStartup.CheckState = Config.RunsOnSystemStartup() ? CheckState.Checked
+            cbxWindowsStartup.CheckState = Config.RunsOnSystemStartup ? CheckState.Checked
                                                                         : CheckState.Unchecked;
 
             if (cbxWindowsStartup.CheckState == CheckState.Unchecked)
                 cbxWindowsStartup.Text = Resources.SetRunOnStartup;
 
             lblGitHub.Links[0].LinkData = "https://github.com/dkopec91/GridIt";
+            lblNameAndVersion.Text = appNameAndVersion;
         }
 
         private void GuiToConfig()

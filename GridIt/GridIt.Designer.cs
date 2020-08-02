@@ -512,6 +512,7 @@
             this.cbxWindowsStartup.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.cbxWindowsStartup.UseVisualStyleBackColor = true;
             this.cbxWindowsStartup.CheckedChanged += new System.EventHandler(this.CbxWindowsStartup_CheckedChanged);
+            this.cbxWindowsStartup.Click += new System.EventHandler(this.CbxWindowsStartup_Click);
             // 
             // tabMainPanel
             // 

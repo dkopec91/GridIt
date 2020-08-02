@@ -54,17 +54,27 @@ namespace GridIt
 
         public static void SetRunOnSystemStartup(bool runOnSystemStartup)
         {
+            var currentRegistryKeyValue = appKey.GetValue(GridIt)?.ToString();
+            var currentExecutablePath = Application.ExecutablePath;
+
             if (runOnSystemStartup)
             {
-                if (appKey.GetValue(GridIt) != null && appKey.GetValue(GridIt).ToString() != Application.ExecutablePath)
-                    appKey.DeleteValue(GridIt);
-
-                if (appKey.GetValue(GridIt) == null)
-                    appKey.SetValue(GridIt, Application.ExecutablePath);
+                appKey.SetValue(GridIt, currentExecutablePath);
+                MessageBox.Show(
+                    string.Format(Resources.AutostartOnMessage, currentExecutablePath),
+                    Resources.AutostartOnTitle,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
-            else
+
+            else if (RunsOnSystemStartup)
             {
                 appKey.DeleteValue(GridIt);
+                MessageBox.Show(
+                    string.Format(Resources.AutostartOffMessage, currentRegistryKeyValue),
+                    Resources.AutostartOffTitle,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
         }
     }

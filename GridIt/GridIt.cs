@@ -168,16 +168,7 @@ namespace GridIt
 
         private void CbxWindowsStartup_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbxWindowsStartup.CheckState == CheckState.Checked)
-            {
-                cbxWindowsStartup.Text = Resources.UnsetRunOnStartup;
-                Config.SetRunOnSystemStartup(true);
-            }
-            else
-            {
-                cbxWindowsStartup.Text = Resources.SetRunOnStartup;
-                Config.SetRunOnSystemStartup(false);
-            }
+            cbxWindowsStartup.Text = cbxWindowsStartup.CheckState == CheckState.Checked ? Resources.UnsetRunOnStartup : Resources.SetRunOnStartup;
         }
 
         private void SetColor(Label label, ref System.Drawing.Color color)
@@ -219,6 +210,11 @@ namespace GridIt
             this.lblGitHub.Links[0].Visited = true;
             string target = e.Link.LinkData as string;
             System.Diagnostics.Process.Start(target);
+        }
+
+        private void CbxWindowsStartup_Click(object sender, EventArgs e)
+        {
+            Config.SetRunOnSystemStartup(cbxWindowsStartup.CheckState == CheckState.Checked);
         }
     }
 }

@@ -61,6 +61,46 @@ namespace GridIt.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GridIt will no longer be started at Windows startup from the following path:
+        ///
+        ///{0}.
+        /// </summary>
+        internal static string AutostartOffMessage {
+            get {
+                return ResourceManager.GetString("AutostartOffMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autostart disabled.
+        /// </summary>
+        internal static string AutostartOffTitle {
+            get {
+                return ResourceManager.GetString("AutostartOffTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GridIt will be started at Windows startup from the following path:
+        ///
+        ///{0}.
+        /// </summary>
+        internal static string AutostartOnMessage {
+            get {
+                return ResourceManager.GetString("AutostartOnMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autostart enabled.
+        /// </summary>
+        internal static string AutostartOnTitle {
+            get {
+                return ResourceManager.GetString("AutostartOnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hide Crosshair (Ctrl + 2).
         /// </summary>
         internal static string CrosshairHide {

@@ -12,7 +12,6 @@ namespace GridIt
         private static bool CrosshairShown;
         private int _hotkeyIdCrosshair;
         private int _hotkeyIdFullGrid;
-        private int _hotkeyIdRadial;
         public string appNameAndVersion = $"GridIt {typeof(MainWindow).Assembly.GetName().Version}";
 
         public MainWindow()
@@ -42,16 +41,13 @@ namespace GridIt
 
             _hotkeyIdFullGrid = this.Handle.ToInt32() ^ (int)modifiers ^ (int)Keys.D1;
             _hotkeyIdCrosshair = this.Handle.ToInt32() ^ (int)modifiers ^ (int)Keys.D2;
-            _hotkeyIdRadial = this.Handle.ToInt32() ^ (int)modifiers ^ (int)Keys.D3;
 
             WindowsApi.RegisterHotKey(this.Handle, _hotkeyIdFullGrid, modifiers, Keys.D1);
             WindowsApi.RegisterHotKey(this.Handle, _hotkeyIdCrosshair, modifiers, Keys.D2);
-            WindowsApi.RegisterHotKey(this.Handle, _hotkeyIdRadial, modifiers, Keys.D3);
         }
 
         private void UnregisterHotkeys()
         {
-            WindowsApi.UnregisterHotKey(this.Handle, _hotkeyIdRadial);
             WindowsApi.UnregisterHotKey(this.Handle, _hotkeyIdFullGrid);
             WindowsApi.UnregisterHotKey(this.Handle, _hotkeyIdCrosshair);
         }
@@ -145,8 +141,6 @@ namespace GridIt
                     BtnOnOffFullGrid_Click(this, null);
                 else if (m.WParam.ToInt32() == _hotkeyIdCrosshair)
                     BtnOnOffCrosshair_Click(this, null);
-                else if (m.WParam.ToInt32() == _hotkeyIdRadial)
-                    throw new NotImplementedException("Radial overlay not implemented");
             }
             base.WndProc(ref m);
         }
@@ -157,11 +151,6 @@ namespace GridIt
             {
                 notifyIcon.Visible = true;
                 this.Hide();
-            }
-
-            else if (FormWindowState.Normal == this.WindowState)
-            {
-                notifyIcon.Visible = false;
             }
         }
 
@@ -174,6 +163,7 @@ namespace GridIt
         {
             this.Show();
             this.WindowState = FormWindowState.Normal;
+            notifyIcon.Visible = false;
         }
 
         private void CbxWindowsStartup_CheckedChanged(object sender, EventArgs e)
